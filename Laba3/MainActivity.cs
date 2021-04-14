@@ -16,13 +16,14 @@ namespace Laba3
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             // Set our view from the "main" layout resource
-            var b = Resource.Id.button1;
-            var c = FindViewById(Resource.Id.button1);
+            SetContentView(Resource.Layout.activity_main);
+         
             Button button = FindViewById<Button>(Resource.Id.button1);
                 //FindViewById<Button>(Resource.Id.button1);
+            
             button.Click += Button_Click;
 
-            SetContentView(Resource.Layout.activity_main);
+           
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
@@ -34,8 +35,11 @@ namespace Laba3
         public void Button_Click(object sender, EventArgs e)
         {
             EditText t = FindViewById<EditText>(Resource.Id.textView1);
-            t.Text = count.ToString();
-            count++;
+            double a = double.Parse(t.Text);
+            a = 3 * Math.Pow(a, 2) * Math.Sqrt(5*(5+2*Math.Sqrt(5)));
+            TextView text = FindViewById<TextView>(Resource.Id.textView2);
+            text.Text = a.ToString();
+
         }
     }
 }
